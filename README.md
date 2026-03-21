@@ -14,7 +14,7 @@ The app uses Claude (Anthropic's AI) to play all the characters in each scenario
 | 2 | **The Board Accountability Crisis** -- Your AI made discriminatory decisions. A journalist is calling. | Advanced | 35 min | Human Dilemma |
 | 3 | **The Workforce Transformation Town Hall** -- Address 49,000 employees as trust erodes | Advanced | 35 min | Human Dilemma |
 | 4 | **The Competitive Intelligence Dilemma** -- A competitor announces full automation. React or differentiate? | Intermediate | 30 min | Strategic |
-| 5 | **The CHRO-CIO Partnership Test** -- Broker a path between your feuding CHRO and CIO | Intermediate | 30 min | Strategic |
+| 5 | **The ExCo Alignment Test** -- A trilateral ExCo conflict: CIO wants speed, CHRO wants readiness, CCO says customers are pulling in opposite directions | Intermediate | 35 min | Strategic |
 | 6 | **The Investor AI Story** -- Capital Markets Day. What you commit to publicly defines 4 years. | Expert | 40 min | Strategic |
 | 7 | **The Ethics Red Line** -- A $180M client wants you to use a discriminatory algorithm | Expert | 40 min | Human Dilemma |
 
