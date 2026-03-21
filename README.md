@@ -110,12 +110,33 @@ Before clicking Deploy, you need to tell Vercel where the app code is:
 3. When it finishes, a **"Congratulations!"** screen appears with your live URL (e.g. `https://csuite-simulation-abc123.vercel.app`)
 4. **Copy this URL and save it.** This is the address you will share with workshop participants.
 
-#### Step A5: Verify it works
+#### Step A5: Add a Redis database (required for sessions to work)
 
-1. Open the URL in your browser
+The app needs a small database so that when a facilitator creates a session, teams can find it. This is free and takes 2 minutes.
+
+1. From your Vercel dashboard, click on your **project name** (e.g. "csuite-simulation")
+2. Click the **"Storage"** tab at the top of the page
+3. Click **"Create Database"** (or **"Connect Store"**)
+4. Choose **"Upstash Redis"** (or just **"Redis"** / **"KV"**)
+5. Select the **Free** plan
+6. Give it a name (e.g. `csuite-sessions`) and click **Create**
+7. When asked to connect it to your project, select your project and click **Connect**
+8. Vercel automatically adds the required connection credentials to your project
+
+Now redeploy so the database connection takes effect:
+
+1. Click the **"Deployments"** tab
+2. Find the latest deployment, click the three dots (**...**) on the right
+3. Click **"Redeploy"** and confirm
+
+#### Step A6: Verify it works
+
+1. Open your app URL in your browser
 2. You should see a landing page with two buttons: **Facilitator** and **Team**
 3. Click **Facilitator**, select any scenario (e.g. "The Transformation Bet"), and click **Create Session**
-4. If a 5-character session code appears, everything is working
+4. A 5-character session code appears (e.g. `KR4NP`)
+5. **Open a new browser tab** with the same URL, click **Team**, enter the session code and a team name, and click **Join Session**
+6. If the team joins successfully and sees the scenario briefing, everything is working
 
 **You are done.** Skip ahead to the "Running a Workshop" section below.
 
@@ -255,9 +276,28 @@ The API key you used for local testing needs to be added to the internet deploym
    vercel --prod
    ```
 
-#### Step B8: Verify
+#### Step B8: Add a Redis database (required for sessions to work)
 
-Open your app URL in a browser. Click "Facilitator", select a scenario, and create a session. If a session code appears, everything is working.
+The app needs a small database so that when a facilitator creates a session, teams can find it. This is free.
+
+1. Open your browser and go to **https://vercel.com/dashboard**
+2. Click on your **project name**
+3. Click the **"Storage"** tab at the top
+4. Click **"Create Database"** (or **"Connect Store"**)
+5. Choose **"Upstash Redis"** (or **"Redis"** / **"KV"**)
+6. Select the **Free** plan, give it a name (e.g. `csuite-sessions`), and click **Create**
+7. Connect it to your project when prompted
+8. Redeploy:
+   ```
+   vercel --prod
+   ```
+
+#### Step B9: Verify
+
+1. Open your app URL in a browser
+2. Click **Facilitator**, select a scenario, and create a session
+3. Open a **second browser tab** with the same URL, click **Team**, enter the session code and a team name
+4. If the team joins successfully, everything is working
 
 ---
 
@@ -336,9 +376,9 @@ Monitor your usage at **https://console.anthropic.com** under "Usage".
 | "ANTHROPIC_API_KEY is not configured" | Your API key is missing. **Option A users:** Go to your Vercel project dashboard > Settings > Environment Variables, add `ANTHROPIC_API_KEY` with your key, and click Redeploy from the Deployments tab. **Option B users:** Run `vercel env add ANTHROPIC_API_KEY production` then `vercel --prod`. |
 | API errors or no response | Check your Anthropic credit balance at https://console.anthropic.com. Add more credits if the balance is $0. |
 | Teams cannot join session | Make sure all devices are connected to the internet. The session code is case-sensitive -- type it exactly as shown on the facilitator's screen. |
+| "Session not found" when teams try to join | The Redis database is not connected. Go to your Vercel project dashboard > **Storage** tab > create an **Upstash Redis** database (free) > connect it to your project > redeploy. See Step A5 or B8 above. |
 | Slow first response | Normal. The first message loads the full scenario context. Subsequent responses are faster. |
 | Dashboard not updating | Refresh the browser page. The dashboard polls for updates every 5 seconds. |
-| "Session not found" error | Sessions are stored in temporary memory. If the server restarts (e.g. after a new deployment), previous sessions are cleared. Create a new session. |
 | `node --version` shows an error in PowerShell | Close and reopen PowerShell. If it still does not work, restart your PC and try again. |
 | `npm` is not recognised | Node.js was not installed correctly. Re-download from https://nodejs.org and run the installer again. Make sure to restart PowerShell after installing. |
 | Vercel deployment fails with build error | Make sure you set the **Root Directory** to `csuite-simulation` in the Vercel project settings. |
@@ -390,5 +430,5 @@ csuite-simulation/
 - **Styling:** Tailwind CSS v4 with custom CSS variables
 - **AI Engine:** Anthropic Claude API (claude-sonnet-4-20250514)
 - **Security:** Server-side API proxy -- the API key is never exposed to browsers
-- **State:** In-memory session store (suitable for single-server deployment)
+- **State:** Upstash Redis for persistent sessions (falls back to in-memory for local dev)
 - **Hosting:** Vercel (free tier)

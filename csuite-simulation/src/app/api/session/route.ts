@@ -1,8 +1,6 @@
 import { NextRequest } from 'next/server';
 import { SessionState, TeamState, PitStopResult } from '@/lib/types';
-
-// In-memory session store. Upgrade path: replace with Vercel KV.
-const sessions = new Map<string, SessionState>();
+import { getSession, saveSession } from '@/lib/sessionStore';
 
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;
@@ -26,7 +24,7 @@ export async function POST(request: NextRequest) {
       createdAt: Date.now(),
       teams: {},
     };
-    sessions.set(code, session);
+    await saveSession(session);
     return Response.json({ ok: true, session: { code, scenarioId, createdAt: session.createdAt } });
   }
 
@@ -36,7 +34,7 @@ export async function POST(request: NextRequest) {
     if (!code || !teamName) {
       return Response.json({ error: 'Missing code or teamName.' }, { status: 400 });
     }
-    const session = sessions.get(code);
+    const session = await getSession(code);
     if (!session) {
       return Response.json({ error: 'Session not found.' }, { status: 404 });
     }
@@ -54,6 +52,7 @@ export async function POST(request: NextRequest) {
       lastUpdate: Date.now(),
     };
     session.teams[teamName] = team;
+    await saveSession(session);
     return Response.json({ ok: true, scenarioId: session.scenarioId });
   }
 
@@ -63,7 +62,7 @@ export async function POST(request: NextRequest) {
     if (!code || !teamName) {
       return Response.json({ error: 'Missing code or teamName.' }, { status: 400 });
     }
-    const session = sessions.get(code);
+    const session = await getSession(code);
     if (!session || !session.teams[teamName]) {
       return Response.json({ error: 'Session or team not found.' }, { status: 404 });
     }
@@ -76,6 +75,7 @@ export async function POST(request: NextRequest) {
     }
     if (body.finalAssessment !== undefined) team.finalAssessment = body.finalAssessment as string;
     team.lastUpdate = Date.now();
+    await saveSession(session);
     return Response.json({ ok: true });
   }
 
@@ -91,7 +91,7 @@ export async function GET(request: NextRequest) {
     return Response.json({ error: 'Missing code parameter.' }, { status: 400 });
   }
 
-  const session = sessions.get(code);
+  const session = await getSession(code);
   if (!session) {
     return Response.json({ error: 'Session not found.' }, { status: 404 });
   }
