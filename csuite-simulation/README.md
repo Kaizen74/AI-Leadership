@@ -61,5 +61,5 @@ src/
 - **Styling:** Tailwind CSS v4 with custom CSS variables
 - **AI Engine:** Anthropic Claude API (claude-sonnet-4-20250514)
 - **Security:** Server-side API proxy -- the API key is never exposed to browsers
-- **State:** In-memory session store (suitable for single-server deployment)
+- **State:** Upstash Redis for persistent sessions (falls back to in-memory for local dev)
 - **Hosting:** Vercel (free tier)
