@@ -26,7 +26,17 @@ export default function TeamJoin() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || 'Failed to join session.');
+        // Show a user-friendly message; keep storage hint for facilitators
+        const msg = data.error || 'Failed to join session.';
+        if (msg.includes('Session not found')) {
+          setError(
+            msg.includes('in-memory')
+              ? 'Session not found. The server\'s database is not configured — please ask your facilitator to check the deployment setup (Redis must be connected).'
+              : 'Session not found. Please check the code and try again.',
+          );
+        } else {
+          setError(msg);
+        }
         setLoading(false);
         return;
       }

@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 import { SessionState, TeamState, PitStopResult } from '@/lib/types';
-import { getSession, saveSession } from '@/lib/sessionStore';
+import { getSession, saveSession, storeHealth } from '@/lib/sessionStore';
 
 export async function POST(request: NextRequest) {
   let body: Record<string, unknown>;
@@ -36,7 +36,15 @@ export async function POST(request: NextRequest) {
     }
     const session = await getSession(code);
     if (!session) {
-      return Response.json({ error: 'Session not found.' }, { status: 404 });
+      const health = await storeHealth();
+      const hint =
+        health.mode === 'memory'
+          ? ' The server is using in-memory storage (no Redis connected). Sessions do not persist across requests on serverless platforms. Connect an Upstash Redis database in Vercel → Storage tab, then redeploy.'
+          : '';
+      return Response.json(
+        { error: `Session not found.${hint}` },
+        { status: 404 },
+      );
     }
     if (session.teams[teamName]) {
       return Response.json({ ok: true, scenarioId: session.scenarioId, message: 'Already joined.' });
@@ -86,6 +94,12 @@ export async function GET(request: NextRequest) {
   const url = request.nextUrl;
   const code = url.searchParams.get('code');
   const action = url.searchParams.get('action');
+
+  // Diagnostic endpoint: /api/session?action=health
+  if (action === 'health') {
+    const health = await storeHealth();
+    return Response.json(health);
+  }
 
   if (!code) {
     return Response.json({ error: 'Missing code parameter.' }, { status: 400 });
