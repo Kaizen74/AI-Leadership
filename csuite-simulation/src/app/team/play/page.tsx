@@ -124,12 +124,13 @@ function PlayContent() {
       const assistantMsg: Message = { role: 'assistant', content: response };
       const updatedMessages = [...newMessages, assistantMsg];
       setMessages(updatedMessages);
-      updateServer({ turn: newTurn, messages: updatedMessages, status: 'playing' });
 
-      // Check for pit stop at every 4th user turn
-      if (newTurn > 0 && newTurn % 4 === 0) {
+      // Determine status in advance so a single updateServer call is made
+      const isPitStop = newTurn > 0 && newTurn % 4 === 0;
+      updateServer({ turn: newTurn, messages: updatedMessages, status: isPitStop ? 'pitstop' : 'playing' });
+
+      if (isPitStop) {
         setPhase('pitstop');
-        updateServer({ status: 'pitstop' });
       }
     } catch (err) {
       setError(String(err));
@@ -137,11 +138,22 @@ function PlayContent() {
     setLoading(false);
   }
 
+  // Called immediately when PitStop scores are generated — sends to server
+  // so the facilitator dashboard can see scores while teams are discussing
+  const handleScoresReady = useCallback(
+    (result: PitStopResult) => {
+      updateServer({ pitStopResult: result });
+    },
+    [updateServer]
+  );
+
+  // Called when teams click "Resume Simulation" — only updates status and
+  // local state (scores already sent to server by handleScoresReady)
   function handlePitStopComplete(result: PitStopResult) {
     const newResults = [...pitStopResults, result];
     setPitStopResults(newResults);
     setPhase('playing');
-    updateServer({ status: 'playing', pitStopResult: result });
+    updateServer({ status: 'playing' });
   }
 
   async function handleEndAndAssess() {
@@ -202,7 +214,7 @@ Format the scores at the top as a clear list, then provide the narrative.`;
   }
 
   if (phase === 'pitstop') {
-    return <PitStop scenario={scenario} messages={messages} onComplete={handlePitStopComplete} />;
+    return <PitStop scenario={scenario} messages={messages} onComplete={handlePitStopComplete} onScoresReady={handleScoresReady} />;
   }
 
   if (phase === 'completed' && finalAssessment) {

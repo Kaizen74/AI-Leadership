@@ -7,9 +7,10 @@ interface Props {
   scenario: Scenario;
   messages: Message[];
   onComplete: (result: PitStopResult) => void;
+  onScoresReady?: (result: PitStopResult) => void;
 }
 
-export default function PitStop({ scenario, messages, onComplete }: Props) {
+export default function PitStop({ scenario, messages, onComplete, onScoresReady }: Props) {
   const [scores, setScores] = useState<CriterionScore[] | null>(null);
   const [totalScore, setTotalScore] = useState(0);
   const [pattern, setPattern] = useState('');
@@ -54,6 +55,8 @@ Score each criterion 1-5. totalScore is the sum. pattern is a one-sentence obser
         setScores(parsed.scores);
         setTotalScore(parsed.totalScore);
         setPattern(parsed.pattern);
+        // Notify parent immediately so facilitator dashboard sees scores
+        onScoresReady?.(parsed);
       } else {
         throw new Error('Could not parse scoring response.');
       }
@@ -65,13 +68,20 @@ Score each criterion 1-5. totalScore is the sum. pattern is a one-sentence obser
         score: 3,
         note: 'Score pending — API response could not be parsed.',
       }));
-      setScores(fallback);
-      setTotalScore(fallback.length * 3);
-      setPattern('Assessment in progress.');
+      const fallbackResult: PitStopResult = {
+        scores: fallback,
+        totalScore: fallback.length * 3,
+        pattern: 'Assessment in progress.',
+      };
+      setScores(fallbackResult.scores);
+      setTotalScore(fallbackResult.totalScore);
+      setPattern(fallbackResult.pattern);
+      // Notify parent with fallback so facilitator still sees something
+      onScoresReady?.(fallbackResult);
     }
     setLoading(false);
     setTimerActive(true);
-  }, [scenario, messages]);
+  }, [scenario, messages, onScoresReady]);
 
   useEffect(() => {
     fetchScores();
