@@ -52,5 +52,6 @@ export interface SessionState {
   code: string;
   scenarioId: string;
   createdAt: number;
+  openingMessage: string | null;
   teams: Record<string, TeamState>;
 }

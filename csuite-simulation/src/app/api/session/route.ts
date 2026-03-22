@@ -22,6 +22,7 @@ export async function POST(request: NextRequest) {
       code,
       scenarioId,
       createdAt: Date.now(),
+      openingMessage: null,
       teams: {},
     };
     await saveSession(session);
@@ -62,6 +63,24 @@ export async function POST(request: NextRequest) {
     session.teams[teamName] = team;
     await saveSession(session);
     return Response.json({ ok: true, scenarioId: session.scenarioId });
+  }
+
+  if (action === 'setOpening') {
+    const code = body.code as string;
+    const openingMessage = body.openingMessage as string;
+    if (!code || !openingMessage) {
+      return Response.json({ error: 'Missing code or openingMessage.' }, { status: 400 });
+    }
+    const session = await getSession(code);
+    if (!session) {
+      return Response.json({ error: 'Session not found.' }, { status: 404 });
+    }
+    // First-write-wins: only store if no opening exists yet
+    if (!session.openingMessage) {
+      session.openingMessage = openingMessage;
+      await saveSession(session);
+    }
+    return Response.json({ ok: true, openingMessage: session.openingMessage });
   }
 
   if (action === 'updateTeam') {
@@ -108,6 +127,12 @@ export async function GET(request: NextRequest) {
   const session = await getSession(code);
   if (!session) {
     return Response.json({ error: 'Session not found.' }, { status: 404 });
+  }
+
+  if (action === 'getOpening') {
+    return Response.json({
+      openingMessage: session.openingMessage,
+    });
   }
 
   if (action === 'allTeams') {

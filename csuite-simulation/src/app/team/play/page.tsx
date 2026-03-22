@@ -71,9 +71,33 @@ function PlayContent() {
     setError('');
     updateServer({ status: 'playing' });
     try {
-      // Get opening message
-      const openingMessages: Message[] = [{ role: 'user', content: 'Begin the simulation. Set the scene and have the first character speak.' }];
-      const response = await callSimulation(openingMessages);
+      let response: string;
+
+      // Check if the session already has a cached opening (from another team)
+      const openingRes = await fetch(`/api/session?code=${code}&action=getOpening`);
+      const openingData = await openingRes.json();
+
+      if (openingData.openingMessage) {
+        // Use the same opening every team sees
+        response = openingData.openingMessage;
+      } else {
+        // First team to launch — generate the opening and cache it
+        const openingMessages: Message[] = [{ role: 'user', content: 'Begin the simulation. Set the scene and have the first character speak.' }];
+        response = await callSimulation(openingMessages);
+
+        // Save to session (first-write-wins handles race conditions)
+        const saveRes = await fetch('/api/session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action: 'setOpening', code, openingMessage: response }),
+        });
+        const saveData = await saveRes.json();
+        // Use whatever the server accepted (in case another team saved first)
+        if (saveData.openingMessage) {
+          response = saveData.openingMessage;
+        }
+      }
+
       setMessages([{ role: 'assistant', content: response }]);
       setTurn(1);
       updateServer({ turn: 1, messages: [{ role: 'assistant', content: response }] });
