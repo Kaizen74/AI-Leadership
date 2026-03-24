@@ -1,14 +1,6 @@
 import { NextRequest } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
-  if (!apiKey) {
-    return Response.json(
-      { error: 'ANTHROPIC_API_KEY is not configured on the server.' },
-      { status: 500 }
-    );
-  }
-
   let body: { system: string; messages: { role: string; content: string }[]; maxTokens?: number };
   try {
     body = await request.json();
@@ -21,6 +13,14 @@ export async function POST(request: NextRequest) {
     return Response.json(
       { error: 'Missing required fields: system, messages.' },
       { status: 400 }
+    );
+  }
+
+  const apiKey = process.env.ANTHROPIC_API_KEY;
+  if (!apiKey) {
+    return Response.json(
+      { error: 'ANTHROPIC_API_KEY is not configured on the server.' },
+      { status: 500 }
     );
   }
 
