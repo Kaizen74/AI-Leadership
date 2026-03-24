@@ -15,18 +15,20 @@ export async function POST(request: NextRequest) {
   if (action === 'createSession') {
     const code = body.code as string;
     const scenarioId = body.scenarioId as string;
+    const industryId = (body.industryId as string) || 'aviation_logistics';
     if (!code || !scenarioId) {
       return Response.json({ error: 'Missing code or scenarioId.' }, { status: 400 });
     }
     const session: SessionState = {
       code,
       scenarioId,
+      industryId,
       createdAt: Date.now(),
       openingMessage: null,
       teams: {},
     };
     await saveSession(session);
-    return Response.json({ ok: true, session: { code, scenarioId, createdAt: session.createdAt } });
+    return Response.json({ ok: true, session: { code, scenarioId, industryId, createdAt: session.createdAt } });
   }
 
   if (action === 'joinTeam') {
@@ -48,7 +50,7 @@ export async function POST(request: NextRequest) {
       );
     }
     if (session.teams[teamName]) {
-      return Response.json({ ok: true, scenarioId: session.scenarioId, message: 'Already joined.' });
+      return Response.json({ ok: true, scenarioId: session.scenarioId, industryId: session.industryId, message: 'Already joined.' });
     }
     const team: TeamState = {
       teamName,
@@ -62,7 +64,7 @@ export async function POST(request: NextRequest) {
     };
     session.teams[teamName] = team;
     await saveSession(session);
-    return Response.json({ ok: true, scenarioId: session.scenarioId });
+    return Response.json({ ok: true, scenarioId: session.scenarioId, industryId: session.industryId });
   }
 
   if (action === 'setOpening') {
@@ -139,6 +141,7 @@ export async function GET(request: NextRequest) {
     return Response.json({
       code: session.code,
       scenarioId: session.scenarioId,
+      industryId: session.industryId,
       teams: session.teams,
     });
   }
@@ -155,6 +158,7 @@ export async function GET(request: NextRequest) {
   return Response.json({
     code: session.code,
     scenarioId: session.scenarioId,
+    industryId: session.industryId,
     createdAt: session.createdAt,
     teams: teamSummaries,
   });

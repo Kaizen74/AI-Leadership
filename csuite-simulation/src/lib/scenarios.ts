@@ -22,7 +22,8 @@ export const scenarios: Scenario[] = [
       "ExCo alignment — brought divided executives toward shared commitment, not just compliance",
       "AI literacy in action — engaged critically with STRATEGY-AI's scenarios rather than accepting or ignoring them",
       "Stakeholder narrative — crafted a board-ready story that was honest about risks and compelling about opportunity",
-      "Aspiration-setting — defined what kind of AI organization you are building, not just what tools you are buying"
+      "Aspiration-setting — defined what kind of AI organization you are building, not just what tools you are buying",
+      "AI fluency — quality of interaction with AI advisory systems, including prompt specificity, critical evaluation of AI outputs, and knowing when to override algorithmic recommendations with human judgment"
     ],
     pitStopQuestions: [
       "How did your team balance the CFO's urgency for breadth against the COO's case for depth?",
@@ -52,7 +53,8 @@ export const scenarios: Scenario[] = [
       "Governance design response — identified the structural failure (insufficient human oversight in agent decision authority) and proposed systemic fix",
       "Stakeholder choreography — managed the sequencing of board, media, and internal communications with appropriate priority",
       "Values clarity — articulated where the organization draws the line on AI-driven decisions, even when statistically optimal",
-      "Crisis composure — maintained leadership presence, made decisions under time pressure, protected both reputation and integrity"
+      "Crisis composure — maintained leadership presence, made decisions under time pressure, protected both reputation and integrity",
+      "AI fluency — quality of interaction with AI advisory systems, including prompt specificity, critical evaluation of AI outputs, and knowing when to override algorithmic recommendations with human judgment"
     ],
     pitStopQuestions: [
       "Who did your team address first — the board, the media, or the internal team? What drove that sequencing?",
@@ -82,7 +84,8 @@ export const scenarios: Scenario[] = [
       "Trust rebuilding — directly addressed the gap between executive optimism and employee anxiety",
       "Commitment specificity — made concrete, verifiable promises about reskilling, redeployment, and timeline rather than platitudes",
       "Stakeholder balance — managed the competing demands of employees (empathy), union (commitments), and investors (results) in a single communication",
-      "Personal vulnerability — showed appropriate humanness, acknowledged what is hard without either performing confidence or collapsing into apology"
+      "Personal vulnerability — showed appropriate humanness, acknowledged what is hard without either performing confidence or collapsing into apology",
+      "AI fluency — quality of interaction with AI advisory systems, including prompt specificity, critical evaluation of AI outputs, and knowing when to override algorithmic recommendations with human judgment"
     ],
     pitStopQuestions: [
       "Did your team lead with the efficiency results or with the human impact? Why?",
@@ -112,7 +115,8 @@ export const scenarios: Scenario[] = [
       "Intelligence judgment — critically evaluated INTEL-AI's competitor analysis without dismissing or over-relying on it",
       "Narrative differentiation — articulated a compelling market position that turns the human-agent model into competitive advantage",
       "Stakeholder management — addressed board/investor pressure without panic or false promises",
-      "Speed vs. substance — balanced urgency of market response with integrity of strategic decision"
+      "Speed vs. substance — balanced urgency of market response with integrity of strategic decision",
+      "AI fluency — quality of interaction with AI advisory systems, including prompt specificity, critical evaluation of AI outputs, and knowing when to override algorithmic recommendations with human judgment"
     ],
     pitStopQuestions: [
       "Did your team's first instinct lean toward 'match them' or 'differentiate'? What drove that?",
@@ -142,7 +146,8 @@ export const scenarios: Scenario[] = [
       "Trilateral integration — synthesised the CIO's technology readiness, the CHRO's people readiness, AND the CCO's customer segmentation into a coherent strategy rather than arbitrating between any two",
       "Commercial grounding — treated the SkyConnect and Gulf Royal situations as strategic design constraints, not just context; the deployment decision is driven by customer value, not internal convenience",
       "Field perspective integration — heard the Regional CEO's operational reality and granted appropriate autonomy rather than imposing a headquarters model",
-      "Accountability architecture — created shared KPIs where CIO, CHRO, and CCO are jointly accountable for customer outcomes (not just deployment milestones, training completion, or contract renewals separately)"
+      "Accountability architecture — created shared KPIs where CIO, CHRO, and CCO are jointly accountable for customer outcomes (not just deployment milestones, training completion, or contract renewals separately)",
+      "AI fluency — quality of interaction with AI advisory systems, including prompt specificity, critical evaluation of AI outputs, and knowing when to override algorithmic recommendations with human judgment"
     ],
     pitStopQuestions: [
       "Did your team treat this as a two-sided dispute (CIO vs. CHRO) or did the CCO's customer data fundamentally change the shape of the decision?",
@@ -172,7 +177,8 @@ export const scenarios: Scenario[] = [
       "AI narrative quality — told a compelling story about how AI creates value (not just that it exists) in language investors understand",
       "Uncertainty honesty — acknowledged genuine unknowns without undermining confidence",
       "Analyst engagement — handled pointed questions with substance, not evasion",
-      "Long-term vision — connected short-term AI investments to a multi-year value creation thesis"
+      "Long-term vision — connected short-term AI investments to a multi-year value creation thesis",
+      "AI fluency — quality of interaction with AI advisory systems, including prompt specificity, critical evaluation of AI outputs, and knowing when to override algorithmic recommendations with human judgment"
     ],
     pitStopQuestions: [
       "Which scenario did your team choose for public guidance — conservative, base, or stretch? What drove that decision?",
@@ -202,7 +208,8 @@ export const scenarios: Scenario[] = [
       "Commercial creativity — explored alternatives that protect the relationship without compromising principles (e.g., offering the company's own fair scheduling solution as replacement)",
       "Regulatory awareness — identified the EU AI Act and ESG implications correctly and incorporated them into the decision",
       "Stakeholder choreography — managed the partner airline, board committee, commercial head, and ESG head with appropriate sequencing",
-      "Moral courage — made the hard call knowing it has real financial consequences, not by finding a cleverness that avoids the trade-off"
+      "Moral courage — made the hard call knowing it has real financial consequences, not by finding a cleverness that avoids the trade-off",
+      "AI fluency — quality of interaction with AI advisory systems, including prompt specificity, critical evaluation of AI outputs, and knowing when to override algorithmic recommendations with human judgment"
     ],
     pitStopQuestions: [
       "Did your team draw a hard line on the discriminatory algorithm, or did you look for a compromise?",

@@ -48,6 +48,32 @@ export default function Home() {
           >
             Team
           </button>
+          <button
+            onClick={() => router.push('/solo')}
+            className="px-8 py-4 text-base font-medium transition-opacity hover:opacity-90"
+            style={{
+              background: 'transparent',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-medium)',
+              borderRadius: '8px',
+              fontFamily: "'DM Sans', sans-serif",
+            }}
+          >
+            Solo Practice
+          </button>
+          <button
+            onClick={() => router.push('/analytics')}
+            className="px-8 py-4 text-base font-medium transition-opacity hover:opacity-90"
+            style={{
+              background: 'transparent',
+              color: 'var(--text-primary)',
+              border: '1px solid var(--border-medium)',
+              borderRadius: '8px',
+              fontFamily: "'DM Sans', sans-serif",
+            }}
+          >
+            My Progress
+          </button>
         </div>
       </div>
     </div>

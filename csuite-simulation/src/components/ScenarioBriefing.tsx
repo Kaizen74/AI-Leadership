@@ -1,13 +1,15 @@
 'use client';
 
 import { Scenario } from '@/lib/types';
+import { Industry } from '@/lib/industries';
 
 interface Props {
   scenario: Scenario;
   onLaunch: () => void;
+  industry?: Industry;
 }
 
-export default function ScenarioBriefing({ scenario, onLaunch }: Props) {
+export default function ScenarioBriefing({ scenario, onLaunch, industry }: Props) {
   return (
     <div className="max-w-[960px] mx-auto px-8 py-12">
       <div className="mb-8">
@@ -27,6 +29,14 @@ export default function ScenarioBriefing({ scenario, onLaunch }: Props) {
           <span style={{ color: 'var(--text-tertiary)', fontFamily: "'DM Sans', sans-serif", fontSize: '14px' }}>
             {scenario.duration}
           </span>
+          {industry && (
+            <span
+              className="text-xs font-semibold px-3 py-1 rounded-full"
+              style={{ background: 'rgba(196,152,90,0.08)', color: 'var(--accent-secondary)', fontFamily: "'DM Sans', sans-serif" }}
+            >
+              {industry.icon} {industry.name}
+            </span>
+          )}
         </div>
         <h1 className="text-3xl font-semibold mb-2" style={{ fontFamily: "'Playfair Display', serif", color: 'var(--text-primary)' }}>
           {scenario.name}

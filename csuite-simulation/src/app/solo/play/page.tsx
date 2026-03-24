@@ -9,13 +9,11 @@ import { Message, Scenario, PitStopResult } from '@/lib/types';
 import ScenarioBriefing from '@/components/ScenarioBriefing';
 import ChatMessage from '@/components/ChatMessage';
 import PitStop from '@/components/PitStop';
-import Assessment from '@/components/Assessment';
+import SoloAssessment from '@/components/SoloAssessment';
 import AIAdvisorConsole from '@/components/AIAdvisorConsole';
 
-function PlayContent() {
+function SoloPlayContent() {
   const searchParams = useSearchParams();
-  const code = searchParams.get('code') || '';
-  const teamName = searchParams.get('team') || '';
   const scenarioId = searchParams.get('scenario') || '';
   const industryId = searchParams.get('industry') || 'aviation_logistics';
 
@@ -40,21 +38,6 @@ function PlayContent() {
     scrollToBottom();
   }, [messages, scrollToBottom]);
 
-  const updateServer = useCallback(
-    async (updates: Record<string, unknown>) => {
-      try {
-        await fetch('/api/session', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'updateTeam', code, teamName, ...updates }),
-        });
-      } catch {
-        // Non-critical — facilitator polling will still work
-      }
-    },
-    [code, teamName]
-  );
-
   async function callSimulation(msgs: Message[]): Promise<string> {
     if (!scenario) return '';
     const systemPrompt = buildSystemPrompt(scenario, industry);
@@ -73,38 +56,11 @@ function PlayContent() {
     setPhase('playing');
     setLoading(true);
     setError('');
-    updateServer({ status: 'playing' });
     try {
-      let response: string;
-
-      // Check if the session already has a cached opening (from another team)
-      const openingRes = await fetch(`/api/session?code=${code}&action=getOpening`);
-      const openingData = await openingRes.json();
-
-      if (openingData.openingMessage) {
-        // Use the same opening every team sees
-        response = openingData.openingMessage;
-      } else {
-        // First team to launch — generate the opening and cache it
-        const openingMessages: Message[] = [{ role: 'user', content: 'Begin the simulation. Set the scene and have the first character speak.' }];
-        response = await callSimulation(openingMessages);
-
-        // Save to session (first-write-wins handles race conditions)
-        const saveRes = await fetch('/api/session', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ action: 'setOpening', code, openingMessage: response }),
-        });
-        const saveData = await saveRes.json();
-        // Use whatever the server accepted (in case another team saved first)
-        if (saveData.openingMessage) {
-          response = saveData.openingMessage;
-        }
-      }
-
+      const openingMessages: Message[] = [{ role: 'user', content: 'Begin the simulation. Set the scene and have the first character speak.' }];
+      const response = await callSimulation(openingMessages);
       setMessages([{ role: 'assistant', content: response }]);
       setTurn(1);
-      updateServer({ turn: 1, messages: [{ role: 'assistant', content: response }] });
     } catch (err) {
       setError(String(err));
     }
@@ -129,10 +85,7 @@ function PlayContent() {
       const updatedMessages = [...newMessages, assistantMsg];
       setMessages(updatedMessages);
 
-      // Determine status in advance so a single updateServer call is made
       const isPitStop = newTurn > 0 && newTurn % 4 === 0;
-      updateServer({ turn: newTurn, messages: updatedMessages, status: isPitStop ? 'pitstop' : 'playing' });
-
       if (isPitStop) {
         setPhase('pitstop');
       }
@@ -142,22 +95,10 @@ function PlayContent() {
     setLoading(false);
   }
 
-  // Called immediately when PitStop scores are generated — sends to server
-  // so the facilitator dashboard can see scores while teams are discussing
-  const handleScoresReady = useCallback(
-    (result: PitStopResult) => {
-      updateServer({ pitStopResult: result });
-    },
-    [updateServer]
-  );
-
-  // Called when teams click "Resume Simulation" — only updates status and
-  // local state (scores already sent to server by handleScoresReady)
   function handlePitStopComplete(result: PitStopResult) {
     const newResults = [...pitStopResults, result];
     setPitStopResults(newResults);
     setPhase('playing');
-    updateServer({ status: 'playing' });
   }
 
   async function handleEndAndAssess() {
@@ -167,7 +108,7 @@ function PlayContent() {
     try {
       const assessmentPrompt = `You have been observing this leadership simulation. Now provide a comprehensive debrief assessment.
 
-SCENARIO: ${scenario.name}
+SCENARIO: ${scenario.name}${industry ? `\nINDUSTRY CONTEXT: ${industry.name}` : ''}
 ASSESSMENT CRITERIA:
 ${scenario.assessmentCriteria.map((c, i) => `${i + 1}. ${c}`).join('\n')}
 
@@ -198,7 +139,6 @@ Format the scores at the top as a clear list, then provide the narrative.`;
       const assessment = textBlock?.text || 'Assessment could not be generated.';
       setFinalAssessment(assessment);
       setPhase('completed');
-      updateServer({ status: 'completed', finalAssessment: assessment });
     } catch (err) {
       setError(String(err));
     }
@@ -218,11 +158,11 @@ Format the scores at the top as a clear list, then provide the narrative.`;
   }
 
   if (phase === 'pitstop') {
-    return <PitStop scenario={scenario} messages={messages} onComplete={handlePitStopComplete} onScoresReady={handleScoresReady} />;
+    return <PitStop scenario={scenario} messages={messages} onComplete={handlePitStopComplete} />;
   }
 
   if (phase === 'completed' && finalAssessment) {
-    return <Assessment scenario={scenario} assessment={finalAssessment} pitStopResults={pitStopResults} industryId={industryId} turns={turn} />;
+    return <SoloAssessment scenario={scenario} assessment={finalAssessment} pitStopResults={pitStopResults} industry={industry} turns={turn} />;
   }
 
   // Playing phase
@@ -238,7 +178,7 @@ Format the scores at the top as a clear list, then provide the narrative.`;
             {scenario.name}
           </h1>
           <p className="text-xs mt-0.5" style={{ color: 'var(--text-tertiary)', fontFamily: "'DM Sans', sans-serif" }}>
-            {teamName}{industry ? ` · ${industry.icon} ${industry.name}` : ''}
+            Solo Practice{industry ? ` · ${industry.icon} ${industry.name}` : ''}
           </p>
         </div>
         <div className="flex items-center gap-4">
@@ -378,10 +318,10 @@ Format the scores at the top as a clear list, then provide the narrative.`;
   );
 }
 
-export default function PlayPage() {
+export default function SoloPlayPage() {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-primary)' }}><p style={{ color: 'var(--text-secondary)' }}>Loading...</p></div>}>
-      <PlayContent />
+      <SoloPlayContent />
     </Suspense>
   );
 }

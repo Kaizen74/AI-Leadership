@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { scenarios } from '@/lib/scenarios';
 import { TeamState, PitStopResult } from '@/lib/types';
+import { getIndustry } from '@/lib/industries';
 
 interface TeamData {
   [teamName: string]: TeamState;
@@ -72,12 +73,14 @@ function DashboardContent() {
   const code = searchParams.get('code') || '';
   const [teams, setTeams] = useState<TeamData>({});
   const [scenarioId, setScenarioId] = useState('');
+  const [industryId, setIndustryId] = useState('');
   const [reflectionMode, setReflectionMode] = useState(false);
   const [showScores, setShowScores] = useState(false);
   const [reflectionTimer, setReflectionTimer] = useState(120);
   const [reflectionActive, setReflectionActive] = useState(false);
 
   const scenario = scenarios.find((s) => s.id === scenarioId);
+  const industry = getIndustry(industryId);
 
   const fetchTeams = useCallback(async () => {
     if (!code) return;
@@ -87,6 +90,7 @@ function DashboardContent() {
       if (res.ok) {
         setTeams(data.teams || {});
         if (data.scenarioId) setScenarioId(data.scenarioId);
+        if (data.industryId) setIndustryId(data.industryId);
       }
     } catch {
       // Retry on next poll
@@ -170,7 +174,7 @@ function DashboardContent() {
               Facilitator Dashboard
             </h1>
             <p className="text-sm mt-1" style={{ color: 'var(--text-tertiary)', fontFamily: "'DM Sans', sans-serif" }}>
-              {scenario?.name || 'Loading...'}
+              {scenario?.name || 'Loading...'}{industry ? ` · ${industry.icon} ${industry.name}` : ''}
             </p>
           </div>
           <div className="flex items-center gap-4">

@@ -44,6 +44,7 @@ export default function TeamJoin() {
         code: code.trim().toUpperCase(),
         team: teamName.trim(),
         scenario: data.scenarioId,
+        industry: data.industryId || 'aviation_logistics',
       });
       router.push(`/team/play?${params.toString()}`);
     } catch {

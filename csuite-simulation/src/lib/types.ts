@@ -51,7 +51,28 @@ export interface TeamState {
 export interface SessionState {
   code: string;
   scenarioId: string;
+  industryId: string;
   createdAt: number;
   openingMessage: string | null;
   teams: Record<string, TeamState>;
+}
+
+// Analytics types
+export interface SessionRecord {
+  id: string;
+  scenarioId: string;
+  industryId: string;
+  mode: 'team' | 'solo';
+  completedAt: number;
+  turns: number;
+  pitStopResults: PitStopResult[];
+  finalAssessment: string | null;
+  criteriaScores: { criterion: string; score: number }[];
+}
+
+export interface PlayerProfile {
+  playerId: string;
+  displayName: string;
+  createdAt: number;
+  sessions: SessionRecord[];
 }

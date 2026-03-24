@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { scenarios } from '@/lib/scenarios';
+import IndustrySelector from '@/components/IndustrySelector';
 
 function generateCode(): string {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -15,6 +16,7 @@ function generateCode(): string {
 
 export default function FacilitatorSetup() {
   const router = useRouter();
+  const [selectedIndustry, setSelectedIndustry] = useState('aviation_logistics');
   const [selectedScenario, setSelectedScenario] = useState(scenarios[0].id);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -27,7 +29,7 @@ export default function FacilitatorSetup() {
       const res = await fetch('/api/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action: 'createSession', code, scenarioId: selectedScenario }),
+        body: JSON.stringify({ action: 'createSession', code, scenarioId: selectedScenario, industryId: selectedIndustry }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -53,6 +55,16 @@ export default function FacilitatorSetup() {
         <p className="mb-8" style={{ color: 'var(--text-secondary)', fontFamily: "'DM Sans', sans-serif", fontSize: '15px' }}>
           Select a scenario and share the session code with your teams.
         </p>
+
+        <div className="mb-8">
+          <h2 className="text-lg font-semibold mb-3" style={{ fontFamily: "'Playfair Display', serif", color: 'var(--text-primary)' }}>
+            Industry Context
+          </h2>
+          <p className="text-sm mb-4" style={{ color: 'var(--text-tertiary)', fontFamily: "'DM Sans', sans-serif" }}>
+            Choose an industry to recontextualize the scenario. All leadership challenges remain the same — only the surface details adapt.
+          </p>
+          <IndustrySelector selected={selectedIndustry} onSelect={setSelectedIndustry} />
+        </div>
 
         <div className="space-y-3 mb-8">
           {[...scenarios]
