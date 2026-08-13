@@ -1,0 +1,337 @@
+{
+  "communities": {
+    "0": [
+      "csuite_simulation_src_app_solo_play_page",
+      "csuite_simulation_src_app_solo_play_page_soloplaycontent",
+      "csuite_simulation_src_app_solo_play_page_soloplaypage",
+      "csuite_simulation_src_app_team_play_page",
+      "csuite_simulation_src_app_team_play_page_playpage",
+      "csuite_simulation_src_components_aiadvisorconsole",
+      "csuite_simulation_src_components_aiadvisorconsole_advisormessage",
+      "csuite_simulation_src_components_aiadvisorconsole_aiadvisorconsole",
+      "csuite_simulation_src_components_aiadvisorconsole_props",
+      "csuite_simulation_src_components_assessment_props",
+      "csuite_simulation_src_components_chatmessage",
+      "csuite_simulation_src_components_chatmessage_chatmessage",
+      "csuite_simulation_src_components_chatmessage_props",
+      "csuite_simulation_src_components_chatmessage_rendercontent",
+      "csuite_simulation_src_components_pitstop",
+      "csuite_simulation_src_components_pitstop_pitstop",
+      "csuite_simulation_src_components_pitstop_props",
+      "csuite_simulation_src_components_scenariobriefing",
+      "csuite_simulation_src_components_scenariobriefing_props",
+      "csuite_simulation_src_components_scenariobriefing_scenariobriefing",
+      "csuite_simulation_src_components_soloassessment_props",
+      "csuite_simulation_src_lib_industries_industry",
+      "csuite_simulation_src_lib_prompts",
+      "csuite_simulation_src_lib_prompts_buildadvisorprompt",
+      "csuite_simulation_src_lib_prompts_buildsystemprompt",
+      "csuite_simulation_src_lib_types",
+      "csuite_simulation_src_lib_types_character",
+      "csuite_simulation_src_lib_types_criterionscore",
+      "csuite_simulation_src_lib_types_message",
+      "csuite_simulation_src_lib_types_pitstopresult",
+      "csuite_simulation_src_lib_types_scenario",
+      "csuite_simulation_src_lib_types_sessionrecord"
+    ],
+    "1": [
+      "csuite_simulation_src_app_analytics_page",
+      "csuite_simulation_src_app_analytics_page_analyticspage",
+      "csuite_simulation_src_app_analytics_report_page",
+      "csuite_simulation_src_app_analytics_report_page_reportpage",
+      "csuite_simulation_src_components_assessment",
+      "csuite_simulation_src_components_assessment_assessment",
+      "csuite_simulation_src_components_progressionchart",
+      "csuite_simulation_src_components_progressionchart_radarchart",
+      "csuite_simulation_src_components_progressionchart_radarprops",
+      "csuite_simulation_src_components_progressionchart_trendchart",
+      "csuite_simulation_src_components_progressionchart_trendpoint",
+      "csuite_simulation_src_components_progressionchart_trendprops",
+      "csuite_simulation_src_components_soloassessment",
+      "csuite_simulation_src_components_soloassessment_soloassessment",
+      "csuite_simulation_src_lib_analyticsstore",
+      "csuite_simulation_src_lib_analyticsstore_addsessionrecord",
+      "csuite_simulation_src_lib_analyticsstore_createprofile",
+      "csuite_simulation_src_lib_analyticsstore_createsessionrecord",
+      "csuite_simulation_src_lib_analyticsstore_generateid",
+      "csuite_simulation_src_lib_analyticsstore_getprofile",
+      "csuite_simulation_src_lib_analyticsstore_getstats",
+      "csuite_simulation_src_lib_analyticsstore_saveprofile",
+      "csuite_simulation_src_lib_types_playerprofile"
+    ],
+    "2": [
+      "csuite_simulation_src_app_facilitator_dashboard_page",
+      "csuite_simulation_src_app_facilitator_dashboard_page_dashboardcontent",
+      "csuite_simulation_src_app_facilitator_dashboard_page_dashboardpage",
+      "csuite_simulation_src_app_facilitator_dashboard_page_generatepatterns",
+      "csuite_simulation_src_app_facilitator_dashboard_page_teamdata",
+      "csuite_simulation_src_app_facilitator_page",
+      "csuite_simulation_src_app_facilitator_page_facilitatorsetup",
+      "csuite_simulation_src_app_facilitator_page_generatecode",
+      "csuite_simulation_src_app_solo_page",
+      "csuite_simulation_src_app_solo_page_solosetup",
+      "csuite_simulation_src_app_team_play_page_playcontent",
+      "csuite_simulation_src_components_industryselector",
+      "csuite_simulation_src_components_industryselector_industryselector",
+      "csuite_simulation_src_components_industryselector_props",
+      "csuite_simulation_src_lib_industries",
+      "csuite_simulation_src_lib_industries_getindustry",
+      "csuite_simulation_src_lib_industries_industries",
+      "csuite_simulation_src_lib_scenarios",
+      "csuite_simulation_src_lib_scenarios_scenarios"
+    ],
+    "3": [
+      "csuite_simulation_tsconfig_compileroptions",
+      "csuite_simulation_tsconfig_compileroptions_allowjs",
+      "csuite_simulation_tsconfig_compileroptions_esmoduleinterop",
+      "csuite_simulation_tsconfig_compileroptions_incremental",
+      "csuite_simulation_tsconfig_compileroptions_isolatedmodules",
+      "csuite_simulation_tsconfig_compileroptions_jsx",
+      "csuite_simulation_tsconfig_compileroptions_lib",
+      "csuite_simulation_tsconfig_compileroptions_module",
+      "csuite_simulation_tsconfig_compileroptions_moduleresolution",
+      "csuite_simulation_tsconfig_compileroptions_noemit",
+      "csuite_simulation_tsconfig_compileroptions_paths",
+      "csuite_simulation_tsconfig_compileroptions_plugins",
+      "csuite_simulation_tsconfig_compileroptions_resolvejsonmodule",
+      "csuite_simulation_tsconfig_compileroptions_skiplibcheck",
+      "csuite_simulation_tsconfig_compileroptions_strict",
+      "csuite_simulation_tsconfig_compileroptions_target",
+      "ref_dom",
+      "ref_dom_iterable",
+      "ref_esnext"
+    ],
+    "4": [
+      "csuite_simulation_package",
+      "csuite_simulation_package_dependencies",
+      "csuite_simulation_package_dependencies_next",
+      "csuite_simulation_package_dependencies_react",
+      "csuite_simulation_package_dependencies_react_dom",
+      "csuite_simulation_package_dependencies_upstash_redis",
+      "csuite_simulation_package_name",
+      "csuite_simulation_package_private",
+      "csuite_simulation_package_scripts",
+      "csuite_simulation_package_scripts_build",
+      "csuite_simulation_package_scripts_dev",
+      "csuite_simulation_package_scripts_lint",
+      "csuite_simulation_package_scripts_start",
+      "csuite_simulation_package_version",
+      "next",
+      "react",
+      "react_dom",
+      "upstash_redis"
+    ],
+    "5": [
+      "csuite_simulation_package_devdependencies",
+      "csuite_simulation_package_devdependencies_eslint",
+      "csuite_simulation_package_devdependencies_eslint_config_next",
+      "csuite_simulation_package_devdependencies_tailwindcss",
+      "csuite_simulation_package_devdependencies_tailwindcss_postcss",
+      "csuite_simulation_package_devdependencies_types_node",
+      "csuite_simulation_package_devdependencies_types_react",
+      "csuite_simulation_package_devdependencies_types_react_dom",
+      "csuite_simulation_package_devdependencies_typescript",
+      "eslint",
+      "eslint_config_next",
+      "tailwindcss",
+      "tailwindcss_postcss",
+      "types_node",
+      "types_react",
+      "types_react_dom",
+      "typescript"
+    ],
+    "6": [
+      "csuite_simulation_src_app_api_session_route",
+      "csuite_simulation_src_app_api_session_route_get",
+      "csuite_simulation_src_app_api_session_route_post",
+      "csuite_simulation_src_lib_sessionstore",
+      "csuite_simulation_src_lib_sessionstore_deletesession",
+      "csuite_simulation_src_lib_sessionstore_getrediscredentials",
+      "csuite_simulation_src_lib_sessionstore_getsession",
+      "csuite_simulation_src_lib_sessionstore_memorystore",
+      "csuite_simulation_src_lib_sessionstore_redis",
+      "csuite_simulation_src_lib_sessionstore_savesession",
+      "csuite_simulation_src_lib_sessionstore_sessionkey",
+      "csuite_simulation_src_lib_sessionstore_storehealth",
+      "csuite_simulation_src_lib_types_sessionstate",
+      "csuite_simulation_src_lib_types_teamstate",
+      "redis"
+    ],
+    "7": [
+      "csuite_simulation_tsconfig",
+      "csuite_simulation_tsconfig_exclude",
+      "csuite_simulation_tsconfig_include",
+      "ref_mts",
+      "ref_next_dev_types_ts",
+      "ref_next_env_d_ts",
+      "ref_next_types_ts",
+      "ref_node_modules",
+      "ref_ts",
+      "ref_tsx"
+    ],
+    "8": [
+      "csuite_simulation_src_app_layout",
+      "csuite_simulation_src_app_layout_metadata",
+      "csuite_simulation_src_app_layout_rootlayout"
+    ],
+    "9": [
+      "csuite_simulation_eslint_config",
+      "csuite_simulation_eslint_config_eslintconfig"
+    ],
+    "10": [
+      "csuite_simulation_next_config",
+      "csuite_simulation_next_config_nextconfig"
+    ],
+    "11": [
+      "csuite_simulation_postcss_config",
+      "csuite_simulation_postcss_config_config"
+    ],
+    "12": [
+      "csuite_simulation_src_app_api_advisor_route",
+      "csuite_simulation_src_app_api_advisor_route_post"
+    ],
+    "13": [
+      "csuite_simulation_src_app_api_simulate_route",
+      "csuite_simulation_src_app_api_simulate_route_post"
+    ],
+    "14": [
+      "csuite_simulation_src_app_page",
+      "csuite_simulation_src_app_page_home"
+    ],
+    "15": [
+      "csuite_simulation_src_app_team_page",
+      "csuite_simulation_src_app_team_page_teamjoin"
+    ]
+  },
+  "cohesion": {
+    "0": 0.17540322580645162,
+    "1": 0.20553359683794467,
+    "2": 0.17543859649122806,
+    "3": 0.10526315789473684,
+    "4": 0.1111111111111111,
+    "5": 0.11764705882352941,
+    "6": 0.3047619047619048,
+    "7": 0.2,
+    "8": 0.6666666666666666,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0,
+    "12": 1.0,
+    "13": 1.0,
+    "14": 1.0,
+    "15": 1.0
+  },
+  "gods": [
+    {
+      "id": "csuite_simulation_src_lib_types_scenario",
+      "label": "Scenario",
+      "degree": 17
+    },
+    {
+      "id": "csuite_simulation_tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "degree": 16
+    },
+    {
+      "id": "csuite_simulation_src_lib_types_pitstopresult",
+      "label": "PitStopResult",
+      "degree": 12
+    },
+    {
+      "id": "csuite_simulation_src_lib_industries_getindustry",
+      "label": "getIndustry()",
+      "degree": 11
+    },
+    {
+      "id": "csuite_simulation_src_lib_types_message",
+      "label": "Message",
+      "degree": 9
+    },
+    {
+      "id": "csuite_simulation_src_lib_analyticsstore_addsessionrecord",
+      "label": "addSessionRecord()",
+      "degree": 8
+    },
+    {
+      "id": "csuite_simulation_src_lib_industries_industry",
+      "label": "Industry",
+      "degree": 8
+    },
+    {
+      "id": "csuite_simulation_src_lib_scenarios_scenarios",
+      "label": "scenarios",
+      "degree": 8
+    },
+    {
+      "id": "csuite_simulation_tsconfig_include",
+      "label": "include",
+      "degree": 7
+    },
+    {
+      "id": "csuite_simulation_src_app_analytics_page_analyticspage",
+      "label": "AnalyticsPage()",
+      "degree": 6
+    }
+  ],
+  "surprises": [
+    {
+      "source": "AnalyticsPage()",
+      "target": "getIndustry()",
+      "source_files": [
+        "csuite-simulation/src/app/analytics/page.tsx",
+        "csuite-simulation/src/lib/industries.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "ReportPage()",
+      "target": "getIndustry()",
+      "source_files": [
+        "csuite-simulation/src/app/analytics/report/page.tsx",
+        "csuite-simulation/src/lib/industries.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "SoloPlayContent()",
+      "target": "getIndustry()",
+      "source_files": [
+        "csuite-simulation/src/app/solo/play/page.tsx",
+        "csuite-simulation/src/lib/industries.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "PlayContent()",
+      "target": "buildSystemPrompt()",
+      "source_files": [
+        "csuite-simulation/src/app/team/play/page.tsx",
+        "csuite-simulation/src/lib/prompts.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "bridges separate communities"
+    },
+    {
+      "source": "AnalyticsPage()",
+      "target": "createProfile()",
+      "source_files": [
+        "csuite-simulation/src/app/analytics/page.tsx",
+        "csuite-simulation/src/lib/analyticsStore.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

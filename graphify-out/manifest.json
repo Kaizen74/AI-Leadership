@@ -1,0 +1,162 @@
+{
+  "csuite-simulation/eslint.config.mjs": {
+    "mtime": 1786529847.5465317,
+    "ast_hash": "dfa1f5f6a7037bf39dc510f30b180002",
+    "semantic_hash": "dfa1f5f6a7037bf39dc510f30b180002"
+  },
+  "csuite-simulation/next.config.ts": {
+    "mtime": 1786529847.5465317,
+    "ast_hash": "9b77af189a21a7a64e4bd7a426f64176",
+    "semantic_hash": "9b77af189a21a7a64e4bd7a426f64176"
+  },
+  "csuite-simulation/package.json": {
+    "mtime": 1786529847.5489628,
+    "ast_hash": "c8ab4620dbafd03567605ca971a3c5e6",
+    "semantic_hash": "c8ab4620dbafd03567605ca971a3c5e6"
+  },
+  "csuite-simulation/postcss.config.mjs": {
+    "mtime": 1786529847.5489628,
+    "ast_hash": "239f3ebf717465dc636818a1a619398d",
+    "semantic_hash": "239f3ebf717465dc636818a1a619398d"
+  },
+  "csuite-simulation/src/app/analytics/page.tsx": {
+    "mtime": 1786529847.5540297,
+    "ast_hash": "5943c145c580727e23d0811e538b0104",
+    "semantic_hash": "5943c145c580727e23d0811e538b0104"
+  },
+  "csuite-simulation/src/app/analytics/report/page.tsx": {
+    "mtime": 1786529847.5550978,
+    "ast_hash": "f6632ec96b244f6212cbd1a6a8562558",
+    "semantic_hash": "f6632ec96b244f6212cbd1a6a8562558"
+  },
+  "csuite-simulation/src/app/api/advisor/route.ts": {
+    "mtime": 1786529847.555458,
+    "ast_hash": "d7e822abf50f0efe13849022bd1f4f25",
+    "semantic_hash": "d7e822abf50f0efe13849022bd1f4f25"
+  },
+  "csuite-simulation/src/app/api/session/route.ts": {
+    "mtime": 1786529847.555458,
+    "ast_hash": "73cd18c8ae68cc340fa1dcaea72775b0",
+    "semantic_hash": "73cd18c8ae68cc340fa1dcaea72775b0"
+  },
+  "csuite-simulation/src/app/api/simulate/route.ts": {
+    "mtime": 1786529847.555458,
+    "ast_hash": "3cb97f47ad76f17220457654baffcd54",
+    "semantic_hash": "3cb97f47ad76f17220457654baffcd54"
+  },
+  "csuite-simulation/src/app/facilitator/dashboard/page.tsx": {
+    "mtime": 1786529847.5572183,
+    "ast_hash": "3d2580fd57e2c87563d77c9de58f98dc",
+    "semantic_hash": "3d2580fd57e2c87563d77c9de58f98dc"
+  },
+  "csuite-simulation/src/app/facilitator/page.tsx": {
+    "mtime": 1786529847.5572183,
+    "ast_hash": "12dea3421d7420bcba17b8c3008f67d7",
+    "semantic_hash": "12dea3421d7420bcba17b8c3008f67d7"
+  },
+  "csuite-simulation/src/app/layout.tsx": {
+    "mtime": 1786529847.5572183,
+    "ast_hash": "f2e09636c9566e81de0e3586008148f9",
+    "semantic_hash": "f2e09636c9566e81de0e3586008148f9"
+  },
+  "csuite-simulation/src/app/page.tsx": {
+    "mtime": 1786529847.5572183,
+    "ast_hash": "23ca48ec099136cbf50a6bdac6e9de2b",
+    "semantic_hash": "23ca48ec099136cbf50a6bdac6e9de2b"
+  },
+  "csuite-simulation/src/app/solo/page.tsx": {
+    "mtime": 1786529847.5572183,
+    "ast_hash": "29421dbd3165e0491eec40e04104a331",
+    "semantic_hash": "29421dbd3165e0491eec40e04104a331"
+  },
+  "csuite-simulation/src/app/solo/play/page.tsx": {
+    "mtime": 1786529847.5597773,
+    "ast_hash": "2217e651ef4f5412d32b7eac0a44b188",
+    "semantic_hash": "2217e651ef4f5412d32b7eac0a44b188"
+  },
+  "csuite-simulation/src/app/team/page.tsx": {
+    "mtime": 1786529847.5597773,
+    "ast_hash": "661eb26686d704a2a8b291a1fbb5cc9f",
+    "semantic_hash": "661eb26686d704a2a8b291a1fbb5cc9f"
+  },
+  "csuite-simulation/src/app/team/play/page.tsx": {
+    "mtime": 1786529847.561002,
+    "ast_hash": "7dd66af671218e1650c9950b8f9bb721",
+    "semantic_hash": "7dd66af671218e1650c9950b8f9bb721"
+  },
+  "csuite-simulation/src/components/AIAdvisorConsole.tsx": {
+    "mtime": 1786529847.561002,
+    "ast_hash": "ba23e469ba606880dc10449362789c73",
+    "semantic_hash": "ba23e469ba606880dc10449362789c73"
+  },
+  "csuite-simulation/src/components/Assessment.tsx": {
+    "mtime": 1786529847.5619016,
+    "ast_hash": "0ca7b9c7e648f9ab83d9a4c45b4934b1",
+    "semantic_hash": "0ca7b9c7e648f9ab83d9a4c45b4934b1"
+  },
+  "csuite-simulation/src/components/ChatMessage.tsx": {
+    "mtime": 1786529847.5619016,
+    "ast_hash": "c46a6cf5f37132d566dee5aec95b6086",
+    "semantic_hash": "c46a6cf5f37132d566dee5aec95b6086"
+  },
+  "csuite-simulation/src/components/IndustrySelector.tsx": {
+    "mtime": 1786529847.5619016,
+    "ast_hash": "a38bdbf77556a64e6b2bc20eb2c4ea35",
+    "semantic_hash": "a38bdbf77556a64e6b2bc20eb2c4ea35"
+  },
+  "csuite-simulation/src/components/PitStop.tsx": {
+    "mtime": 1786529847.5619016,
+    "ast_hash": "95f6f815884c0cb39fde2639276d005d",
+    "semantic_hash": "95f6f815884c0cb39fde2639276d005d"
+  },
+  "csuite-simulation/src/components/ProgressionChart.tsx": {
+    "mtime": 1786529847.5619016,
+    "ast_hash": "7f1f22d199397ea48e7e52f76f1aab2e",
+    "semantic_hash": "7f1f22d199397ea48e7e52f76f1aab2e"
+  },
+  "csuite-simulation/src/components/ScenarioBriefing.tsx": {
+    "mtime": 1786529847.5619016,
+    "ast_hash": "c5abfa022adffc924a6b6c347ef02658",
+    "semantic_hash": "c5abfa022adffc924a6b6c347ef02658"
+  },
+  "csuite-simulation/src/components/SoloAssessment.tsx": {
+    "mtime": 1786529847.5619016,
+    "ast_hash": "674c36377cb6c26cfe50db03f9137693",
+    "semantic_hash": "674c36377cb6c26cfe50db03f9137693"
+  },
+  "csuite-simulation/src/lib/analyticsStore.ts": {
+    "mtime": 1786529847.5619016,
+    "ast_hash": "38a6b735d8edd2bef925b2bf9462566e",
+    "semantic_hash": "38a6b735d8edd2bef925b2bf9462566e"
+  },
+  "csuite-simulation/src/lib/industries.ts": {
+    "mtime": 1786529847.5641499,
+    "ast_hash": "02999b762a212d0cc051ddba7af4cc6f",
+    "semantic_hash": "02999b762a212d0cc051ddba7af4cc6f"
+  },
+  "csuite-simulation/src/lib/prompts.ts": {
+    "mtime": 1786529847.5641499,
+    "ast_hash": "e8309fc69655db5472d0c9e53520f4b3",
+    "semantic_hash": "e8309fc69655db5472d0c9e53520f4b3"
+  },
+  "csuite-simulation/src/lib/scenarios.ts": {
+    "mtime": 1786529847.5641499,
+    "ast_hash": "d22134d8047e4c304799eefcc75fef7d",
+    "semantic_hash": "d22134d8047e4c304799eefcc75fef7d"
+  },
+  "csuite-simulation/src/lib/sessionStore.ts": {
+    "mtime": 1786529847.5641499,
+    "ast_hash": "05b40e5508d34854257608aa34b8f6e1",
+    "semantic_hash": "05b40e5508d34854257608aa34b8f6e1"
+  },
+  "csuite-simulation/src/lib/types.ts": {
+    "mtime": 1786529847.5641499,
+    "ast_hash": "2716bd020d9eaf97d053499b353844ed",
+    "semantic_hash": "2716bd020d9eaf97d053499b353844ed"
+  },
+  "csuite-simulation/tsconfig.json": {
+    "mtime": 1786529847.5641499,
+    "ast_hash": "ee17fd1c97c735e9f3564e3f5251f125",
+    "semantic_hash": "ee17fd1c97c735e9f3564e3f5251f125"
+  }
+}

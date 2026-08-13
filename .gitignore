@@ -1,0 +1,5 @@
+# graphify: regenerable cache and machine-specific root marker.
+# The graph itself (graph.json, manifest.json) is committed so future
+# sessions can query it without re-running extraction.
+graphify-out/cache/
+graphify-out/.graphify_root
